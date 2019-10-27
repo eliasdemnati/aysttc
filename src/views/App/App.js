@@ -41,18 +41,18 @@ class App extends Component {
     setInterval(() => { window.scrollBy(0, 1000); }, 50);
   }
 
-  render() {
-    const { messages } = this.state;
+  newGame = () => {
+    const { history } = this.props;
 
+    history.push('/game');
+  }
+
+  render() {
     return (
       <div className="App">
         <h1>Are you smarter than Twitch chat ?</h1>
         <p>"Are you smarter than Twitch chat ?" is a game where you compete against your own Twitch chat to answer questions on various theme, and various difficulties.</p>
-        <div>
-          {messages.map(msg => (
-            <p><span style={{ color: msg.color }}>{msg['display-name']}</span>: {msg.message}</p>
-          ))}
-        </div>
+        <button onClick={this.newGame}>Start a new game</button>
       </div>
     );
   }
