@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
-import { getOAuthTokenAction } from '../../redux/actions/IdentityActions';
+import { getOAuthTokenAction, getTwitchUserAction } from '../../redux/actions/IdentityActions';
 import OAuthToken from './OAuthToken';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   saveToken: (token) => (
     dispatch(getOAuthTokenAction(token))
+  ),
+  getTwitchUser: (token) => (
+    dispatch(getTwitchUserAction(token))
   ),
 });
 

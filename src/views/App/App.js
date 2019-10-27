@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import parseMsg from '../../utils/parseMsg';
 import './App.css';
 
@@ -42,10 +41,6 @@ class App extends Component {
     setInterval(() => { window.scrollBy(0, 1000); }, 50);
   }
 
-  connectWithTwitch = () => {
-    document.location = 'https://id.twitch.tv/oauth2/authorize?client_id=bjm191036lt9x95wmxjz4bz9oglmjk&redirect_uri=http://localhost:3000/oauth&response_type=token'
-  }
-
   render() {
     const { messages } = this.state;
 
@@ -58,7 +53,6 @@ class App extends Component {
             <p><span style={{ color: msg.color }}>{msg['display-name']}</span>: {msg.message}</p>
           ))}
         </div>
-        <button onClick={this.connectWithTwitch}>Connect with Twitch</button>
       </div>
     );
   }

@@ -8,9 +8,11 @@ import {
 import store from '../redux/store';
 import App from './App';
 import OAuthToken from './OAuthToken';
+import Header from './Header';
 
 const RootApp = () => (
   <Provider store={store}>
+    <Header />
     <Router>
       <Switch>
         <Route exact path="/" component={App} />

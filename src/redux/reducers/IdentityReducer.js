@@ -1,7 +1,12 @@
-import { GET_OAUTH_TOKEN } from '../actions/IdentityActions';
+import {
+  GET_OAUTH_TOKEN,
+  GET_TWITCH_USER_SUCCESS,
+} from '../actions/IdentityActions';
 
 const initialState = {
+  isLogged: false,
   oauthToken: '',
+  identity: {},
 };
 
 const IdentityReducer = (state = initialState, action) => {
@@ -9,6 +14,11 @@ const IdentityReducer = (state = initialState, action) => {
     case GET_OAUTH_TOKEN:
       return {
         oauthToken: action.data,
+      };
+    case GET_TWITCH_USER_SUCCESS:
+      return {
+        identity: action.data,
+        isLogged: true,
       };
     default:
       return state;

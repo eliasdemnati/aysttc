@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class OAuthToken extends Component {
   componentDidMount() {
-    const { history, saveToken } = this.props;
+    const { history, saveToken, getTwitchUser } = this.props;
 
     const hash = document.location.hash;
     const result = hash.split('&').reduce((result, item) => {
@@ -12,6 +12,7 @@ class OAuthToken extends Component {
     }, {});
 
     saveToken(result['#access_token']);
+    getTwitchUser(result['#access_token']);
     history.push('/');
   }
 
