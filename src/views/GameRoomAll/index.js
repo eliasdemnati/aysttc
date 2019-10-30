@@ -1,3 +1,3 @@
-import GameRoomAll from './GameRoomAll';
+import GameRoomAll from './GameRoomAllContainer';
 
 export default GameRoomAll;

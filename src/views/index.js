@@ -5,7 +5,8 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import store from '../redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from '../redux/store';
 import App from './App';
 import OAuthToken from './OAuthToken';
 import Game from './Game';
@@ -15,16 +16,18 @@ import GameRoomAll from './GameRoomAll';
 
 const RootApp = () => (
   <Provider store={store}>
-    <Header />
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/oauth" component={OAuthToken} />
-        <Route exact path="/game" component={Game} />
-        <Route exact path="/random" component={GameRoomRandom} />
-        <Route exact path="/all" component={GameRoomAll} />
-      </Switch>
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Header />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/oauth" component={OAuthToken} />
+          <Route exact path="/game" component={Game} />
+          <Route exact path="/random" component={GameRoomRandom} />
+          <Route exact path="/all" component={GameRoomAll} />
+        </Switch>
+      </Router>
+    </PersistGate>
   </Provider>
 );
 

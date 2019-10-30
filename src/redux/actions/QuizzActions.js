@@ -11,7 +11,7 @@ export const getQuestionsAction = (rounds, difficulty) => (
   (dispatch) => {
     Axios.get(`https://opentdb.com/api.php?amount=${rounds}&difficulty=${difficulty}`)
       .then((response) => {
-        dispatch(getQuestionsSuccess(response.data));
+        dispatch(getQuestionsSuccess(response.data.results));
       })
       .catch((err) => {
         console.log(err);
