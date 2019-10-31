@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProgressBar = ({ percent, text }) => (
+const ProgressBar = ({ percent, text, hasAnswered }) => (
   <div
     style={{
       display: 'flex',
@@ -23,7 +23,14 @@ const ProgressBar = ({ percent, text }) => (
         }}
       />
     </div>
-    {text}
+    <span
+      style={!hasAnswered ? {
+        color: 'transparent',
+        textShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
+      } : {}}
+    >
+      {text}
+    </span>
   </div>
 );
 

@@ -7,7 +7,7 @@ const StreamerAnswer = ({ currentQuestion, onClickAnswer, currentAnswer }) => (
       flex: 1,
     }}
   >
-    <ul>
+    <ol type="1">
       <li
         onClick={() => onClickAnswer(currentQuestion.correct_answer)}
         style={{
@@ -26,7 +26,7 @@ const StreamerAnswer = ({ currentQuestion, onClickAnswer, currentAnswer }) => (
           {answer}
         </li>
       ))}
-    </ul>
+    </ol>
   </div>
 );
 

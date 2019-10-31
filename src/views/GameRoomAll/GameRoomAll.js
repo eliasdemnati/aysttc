@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { XmlEntities } from 'html-entities';
-import { StreamerAnswer, ChatAnswerAll } from '../../components';
+import { StreamerAnswer, ChatAnswerAll, RulesAll } from '../../components';
 
 class GameRoomAll extends Component {
   constructor(props) {
@@ -36,9 +36,9 @@ class GameRoomAll extends Component {
         return;
       }
 
-      this.setState((prevState) => ({
-        currentTime: prevState.currentTime - 1,
-      }));
+      // this.setState((prevState) => ({
+      //   currentTime: prevState.currentTime - 1,
+      // }));
     }, 1000);
 
     if (currentQuestion + 1 >= questions.length) {
@@ -78,10 +78,10 @@ class GameRoomAll extends Component {
 
     return (
       <div>
-        <div style={{ display: gameStarted ? 'none' : 'block' }}>
-          The game is about to start. Click on the Start button whenever you're ready.<br />
-          <button onClick={this.startGame}>Start</button>
-        </div>
+        <RulesAll
+          start={this.startGame}
+          display={gameStarted}
+        />
         <div style={{ display: !gameStarted ? 'none' : 'block' }}>
           <h1>Question {currentQuestion + 1} / {questions.length}</h1>
           <h2>{entities.decode(questions[currentQuestion].question)}</h2>
@@ -100,6 +100,7 @@ class GameRoomAll extends Component {
             />
             <ChatAnswerAll
               currentQuestion={questions[currentQuestion]}
+              hasAnswered={streamerAnswer.length > 0}
             />
           </div>
           <h3 style={{ textAlign: 'center' }}>Points</h3>
